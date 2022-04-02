@@ -1,42 +1,15 @@
-import {
-  Layout,
-  Grid,
-  Space,
-  Typography,
-  Col,
-  Row,
-  Tooltip,
-  Avatar,
-} from 'antd';
-import { ReactNode, useState } from 'react';
+import { Layout, Typography, Col, Row, Tooltip, Avatar } from 'antd';
+import { ReactNode } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import {
-  DashboardOutlined,
-  CarryOutOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
+import { signOut, useSession } from 'next-auth/react';
 
-const { Header, Content, Sider, Footer } = Layout;
+const { Header, Content } = Layout;
 
 interface Props {
   children: ReactNode;
 }
-
-const routes = [
-  {
-    label: 'Dashboard',
-    icon: <DashboardOutlined className="mr-2" />,
-    to: '/dashboard',
-  },
-  {
-    label: 'Others',
-    icon: <CarryOutOutlined className="mr-2" />,
-    to: '/enquires',
-  },
-];
 function PrivateLayout({ children }: Props) {
-  const router = useRouter();
+  const { data } = useSession();
 
   return (
     <Layout>
@@ -54,13 +27,16 @@ function PrivateLayout({ children }: Props) {
             </Link>
           </Col>
           <Col className="flex items-center gap-8 h-full">
-            <Link href="/" passHref>
+            <Link href="/profile" passHref>
               <Tooltip
                 title={
                   <div className="flex flex-col justify-center items-center gap-4">
-                    <Avatar src="/avatar.png" size={55} />
+                    <Avatar
+                      src={data?.user?.image ?? '/avatar.png'}
+                      size={55}
+                    />
                     <Typography className="text-white text-xl">
-                      Hello, User Name
+                      Hello, {data?.user?.name}
                     </Typography>
                   </div>
                 }
@@ -71,7 +47,7 @@ function PrivateLayout({ children }: Props) {
               </Tooltip>
             </Link>
             <Typography className="flex items-center text-xl cursor-pointer text-white justify-center hover:text-gray-500">
-              Logout
+              <span onClick={() => signOut({ callbackUrl: '/' })}>Logout</span>
             </Typography>
           </Col>
         </Row>

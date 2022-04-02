@@ -2,20 +2,22 @@ import type { NextPage } from 'next';
 import { Button, Card, Col, Form, Input, Row, Typography } from 'antd';
 import AuthLayout from '@/components/layout/AuthLayout';
 import { GoogleOutlined, GithubFilled } from '@ant-design/icons';
+import { signIn } from 'next-auth/react';
+import withAuth, { AuthenticationType } from 'src/shared/hoc/withAuth';
 
 // ONLY ACCESSIBLE WHEN UNAUTHENTICATED
 
-const Login: NextPage = () => {
-  const onSubmitForm = ({
-    password,
-    username,
-  }: {
-    username: string;
-    password: string;
-  }) => {
-    // HANDLE LOGIN HERE
-  };
+const onSubmitForm = ({
+  password,
+  username,
+}: {
+  username: string;
+  password: string;
+}) => {
+  // HANDLE CUSTOM LOGIN HERE
+};
 
+const Login: NextPage = () => {
   return (
     <AuthLayout>
       <div className="flex flex-col items-center justify-center py-8 gap-8">
@@ -43,6 +45,7 @@ const Login: NextPage = () => {
                   block
                   htmlType="submit"
                   className="flex items-center justify-center"
+                  onClick={() => signIn('google', { callbackUrl: '/' })}
                 >
                   Login with Google <GoogleOutlined className="text-red-600" />
                 </Button>
@@ -52,6 +55,7 @@ const Login: NextPage = () => {
                   block
                   htmlType="submit"
                   className="flex items-center justify-center"
+                  onClick={() => signIn('github', { callbackUrl: '/' })}
                 >
                   Login with GitHub
                   <GithubFilled className="text-blue-900" />
@@ -65,4 +69,7 @@ const Login: NextPage = () => {
   );
 };
 
-export default Login;
+export default withAuth(
+  Login,
+  AuthenticationType.NotAccessibleWhenAuthenticated,
+);
