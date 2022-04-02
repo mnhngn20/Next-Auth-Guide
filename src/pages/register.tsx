@@ -3,14 +3,14 @@ import { Typography } from 'antd';
 import AuthLayout from '@/components/layout/AuthLayout';
 import Image from 'next/image';
 
-// NOT REQUIRED AUTHENTICATION
+// ONLY ACCESSIBLE WHEN UNAUTHENTICATED
 
 const Home: NextPage = () => {
   return (
     <AuthLayout>
       <div className="flex flex-col items-center justify-center py-8 gap-8">
         <Typography className="text-2xl font-medium">
-          Authentication Next.js App guided by mnhngn20
+          Feture disabled
         </Typography>
         <Image
           src="/nextauth.png"

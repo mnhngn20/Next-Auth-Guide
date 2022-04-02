@@ -32,7 +32,11 @@ function PrivateLayout({ children }: Props) {
   return (
     <Layout>
       <Header>
-        <Row className="max-w-screen-xl" align="middle">
+        <Row
+          className="max-w-screen-xl h-full"
+          justify="space-between"
+          align="middle"
+        >
           <Col span={4}>
             <Link href="/" passHref>
               <Typography className="text-2xl text-white font-bold cursor-pointer hover:text-gray-500">
@@ -40,19 +44,12 @@ function PrivateLayout({ children }: Props) {
               </Typography>
             </Link>
           </Col>
-          <Col span={16}>
-            <Space align="center" size="large">
-              {routes.map(route => (
-                <Link href={route.to} passHref>
-                  <Typography className="flex items-center text-xl cursor-pointer text-white justify-center hover:text-gray-500">
-                    {route.icon}
-                    {route.label}
-                  </Typography>
-                </Link>
-              ))}
-            </Space>
-          </Col>
-          <Col>
+          <Col className="flex items-center gap-8 h-full">
+            <Link href="/" passHref>
+              <Typography className="flex items-center text-xl cursor-pointer text-white justify-center hover:text-gray-500">
+                Profile
+              </Typography>
+            </Link>
             <Typography className="flex items-center text-xl cursor-pointer text-white justify-center hover:text-gray-500">
               Logout
             </Typography>

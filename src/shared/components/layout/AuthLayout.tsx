@@ -1,4 +1,4 @@
-import { Layout, Grid, Space, Typography, Col, Row } from 'antd';
+import { Layout, Grid, Space, Typography, Col, Row, Button } from 'antd';
 import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -16,18 +16,32 @@ function AuthLayout({ children }: Props) {
   return (
     <Layout>
       <Header>
-        <Row className="max-w-screen-xl h-full" align="middle">
-          <Col span={4}>
+        <Row
+          className="max-w-screen-xl h-full"
+          justify="space-between"
+          align="middle"
+        >
+          <Col>
             <Link href="/" passHref>
               <Typography className="text-2xl text-white font-bold cursor-pointer hover:text-gray-500">
-                LOGO
+                NextAuth.js
               </Typography>
             </Link>
           </Col>
-          <Col span={4} offset={16}>
-            <Typography className="flex items-center text-xl cursor-pointer text-white justify-center hover:text-gray-500">
-              Login
-            </Typography>
+          <Col className="flex items-center gap-8 h-full">
+            <Button
+              type="primary"
+              className="flex items-center text-xl cursor-pointer text-white font-medium"
+              onClick={() => router.push('/login')}
+            >
+              Sign In
+            </Button>
+            <Button
+              className="flex items-center text-xl cursor-pointer text-black font-medium"
+              onClick={() => router.push('/register')}
+            >
+              Sign Up
+            </Button>
           </Col>
         </Row>
       </Header>
