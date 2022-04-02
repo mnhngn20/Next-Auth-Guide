@@ -1,43 +1,13 @@
-import {
-  Layout,
-  Grid,
-  Space,
-  Typography,
-  Col,
-  Row,
-  Tooltip,
-  Avatar,
-} from 'antd';
-import { ReactNode, useState } from 'react';
+import { Layout, Typography, Col, Row, Tooltip, Avatar } from 'antd';
+import { ReactNode } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import {
-  DashboardOutlined,
-  CarryOutOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-
-const { Header, Content, Sider, Footer } = Layout;
+const { Header, Content } = Layout;
 
 interface Props {
   children: ReactNode;
 }
 
-const routes = [
-  {
-    label: 'Dashboard',
-    icon: <DashboardOutlined className="mr-2" />,
-    to: '/dashboard',
-  },
-  {
-    label: 'Others',
-    icon: <CarryOutOutlined className="mr-2" />,
-    to: '/enquires',
-  },
-];
 function PrivateLayout({ children }: Props) {
-  const router = useRouter();
-
   return (
     <Layout>
       <Header>
@@ -54,7 +24,7 @@ function PrivateLayout({ children }: Props) {
             </Link>
           </Col>
           <Col className="flex items-center gap-8 h-full">
-            <Link href="/" passHref>
+            <Link href="/profile" passHref>
               <Tooltip
                 title={
                   <div className="flex flex-col justify-center items-center gap-4">
