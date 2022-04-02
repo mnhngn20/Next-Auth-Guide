@@ -1,4 +1,13 @@
-import { Layout, Grid, Space, Typography, Col, Row } from 'antd';
+import {
+  Layout,
+  Grid,
+  Space,
+  Typography,
+  Col,
+  Row,
+  Tooltip,
+  Avatar,
+} from 'antd';
 import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -46,9 +55,20 @@ function PrivateLayout({ children }: Props) {
           </Col>
           <Col className="flex items-center gap-8 h-full">
             <Link href="/" passHref>
-              <Typography className="flex items-center text-xl cursor-pointer text-white justify-center hover:text-gray-500">
-                Profile
-              </Typography>
+              <Tooltip
+                title={
+                  <div className="flex flex-col justify-center items-center gap-4">
+                    <Avatar src="/avatar.png" size={55} />
+                    <Typography className="text-white text-xl">
+                      Hello, User Name
+                    </Typography>
+                  </div>
+                }
+              >
+                <Typography className="flex items-center text-xl cursor-pointer text-white justify-center hover:text-gray-500">
+                  Profile
+                </Typography>
+              </Tooltip>
             </Link>
             <Typography className="flex items-center text-xl cursor-pointer text-white justify-center hover:text-gray-500">
               Logout

@@ -15,40 +15,40 @@ const ProfilePage = () => {
             justify="center"
           >
             <Col>
-              <Typography className="text-2xl font-medium">
+              <Typography className="text-3xl font-medium">
                 Your Profile
               </Typography>
             </Col>
-            <Col span={24} className="flex items-center">
+            <Col span={24} className="flex items-center justify-center">
               <Avatar src="/avatar.png" size={150} />
             </Col>
             <Col span={24} className="flex items-end gap-4">
-              <Typography className="font-medium text-2xl flex text-gray-900">
+              <Typography className="font-medium text-xl flex text-gray-900">
                 Name:
               </Typography>
-              <Typography className="text-base ">
+              <Typography className="text-base">
                 Nguyen Chau Quang Minh
               </Typography>
             </Col>
             <Col span={24} className="flex items-end gap-4">
-              <Typography className="font-medium text-2xl flex text-gray-900">
+              <Typography className="font-medium text-xl flex text-gray-900">
                 Age:
               </Typography>
-              <Typography className="text-base ">22</Typography>
+              <Typography className="text-base">22</Typography>
             </Col>
             <Col span={24} className="flex items-end gap-4">
-              <Typography className="font-medium text-2xl flex text-gray-900">
+              <Typography className="font-medium text-xl flex text-gray-900">
                 Study At:
               </Typography>
-              <Typography className="text-base ">
+              <Typography className="text-base">
                 Da Nang University of Technology and Science
               </Typography>
             </Col>
             <Col span={24} className="flex items-end gap-4">
-              <Typography className="font-medium text-2xl flex text-gray-900">
+              <Typography className="font-medium text-xl flex text-gray-900">
                 Description:
               </Typography>
-              <Typography className="text-base ">
+              <Typography className="text-base">
                 A passionate web developer who is trying to be better and better
                 everyday
               </Typography>
