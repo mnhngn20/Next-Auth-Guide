@@ -56,7 +56,6 @@ const Login: NextPage = () => {
               <Col span={12}>
                 <Button
                   block
-                  htmlType="submit"
                   className="flex items-center justify-center"
                   onClick={() => signIn('google', { callbackUrl: '/' })}
                 >
@@ -66,7 +65,6 @@ const Login: NextPage = () => {
               <Col span={12}>
                 <Button
                   block
-                  htmlType="submit"
                   className="flex items-center justify-center"
                   onClick={() => signIn('github', { callbackUrl: '/' })}
                 >
