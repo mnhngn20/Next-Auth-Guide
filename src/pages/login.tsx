@@ -8,9 +8,9 @@ import { GoogleOutlined, GithubFilled } from '@ant-design/icons';
 const Login: NextPage = () => {
   const onSubmitForm = ({
     password,
-    username,
+    email,
   }: {
-    username: string;
+    email: string;
     password: string;
   }) => {
     // HANDLE LOGIN HERE
@@ -24,7 +24,7 @@ const Login: NextPage = () => {
           <Form layout="vertical" onFinish={onSubmitForm}>
             <Row align="middle" gutter={[16, 16]}>
               <Col span={24}>
-                <Form.Item label="User Name:" name="username">
+                <Form.Item label="User Name:" name="email">
                   <Input placeholder="Enter your username" />
                 </Form.Item>
               </Col>
@@ -39,20 +39,12 @@ const Login: NextPage = () => {
                 </Button>
               </Col>
               <Col span={12}>
-                <Button
-                  block
-                  htmlType="submit"
-                  className="flex items-center justify-center"
-                >
+                <Button block className="flex items-center justify-center">
                   Login with Google <GoogleOutlined className="text-red-600" />
                 </Button>
               </Col>
               <Col span={12}>
-                <Button
-                  block
-                  htmlType="submit"
-                  className="flex items-center justify-center"
-                >
+                <Button block className="flex items-center justify-center">
                   Login with GitHub
                   <GithubFilled className="text-blue-900" />
                 </Button>
