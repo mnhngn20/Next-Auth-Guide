@@ -9,12 +9,17 @@ import withAuth, { AuthenticationType } from 'src/shared/hoc/withAuth';
 
 const onSubmitForm = ({
   password,
-  username,
+  email,
 }: {
-  username: string;
+  email: string;
   password: string;
 }) => {
   // HANDLE CUSTOM LOGIN HERE
+  signIn('credentials', {
+    email,
+    password,
+    redirect: false,
+  });
 };
 
 const Login: NextPage = () => {
@@ -26,12 +31,20 @@ const Login: NextPage = () => {
           <Form layout="vertical" onFinish={onSubmitForm}>
             <Row align="middle" gutter={[16, 16]}>
               <Col span={24}>
-                <Form.Item label="User Name:" name="username">
+                <Form.Item
+                  label="User Name:"
+                  name="email"
+                  rules={[{ required: true }]}
+                >
                   <Input placeholder="Enter your username" />
                 </Form.Item>
               </Col>
               <Col span={24}>
-                <Form.Item label="Password:" name="password">
+                <Form.Item
+                  label="Password:"
+                  name="password"
+                  rules={[{ required: true }]}
+                >
                   <Input.Password placeholder="Enter your password" />
                 </Form.Item>
               </Col>
